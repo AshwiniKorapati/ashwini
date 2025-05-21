@@ -1,3 +1,4 @@
+
 'use client';
 
 import * as React from 'react';
@@ -7,7 +8,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Mail, Phone, Linkedin, Send, Loader2, Download } from 'lucide-react';
+import { Mail, Linkedin, Send, Loader2, Download } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import Link from 'next/link';
 import { sendEmailAction, type SendEmailInput, type SendEmailResult } from '@/app/actions/send-email';
@@ -98,7 +99,6 @@ export default function ContactSection() {
                 </CardHeader>
                 <CardContent className="space-y-4">
                     <div className="h-6 bg-gray-200 rounded w-3/4 animate-pulse"></div>
-                    <div className="h-6 bg-gray-200 rounded w-1/2 animate-pulse"></div>
                     <div className="h-6 bg-gray-200 rounded w-2/3 animate-pulse"></div>
                 </CardContent>
               </Card>
@@ -202,10 +202,6 @@ export default function ContactSection() {
                 <div className="flex items-center space-x-3 text-foreground/80 hover:text-primary transition-colors">
                   <Mail className="h-6 w-6 text-primary" />
                   <a href="mailto:korapatiashwini@gmail.com">korapatiashwini@gmail.com</a>
-                </div>
-                <div className="flex items-center space-x-3 text-foreground/80 hover:text-primary transition-colors">
-                  <Phone className="h-6 w-6 text-primary" />
-                  <span>+91 95130 35255</span>
                 </div>
                 <div className="flex items-center space-x-3 text-foreground/80 hover:text-primary transition-colors">
                   <Linkedin className="h-6 w-6 text-primary" />
