@@ -1,9 +1,10 @@
+
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Download, Linkedin, Send } from 'lucide-react';
 import Link from 'next/link';
 
-const resumePdfPath = "/resume/Ashwini_M_Resume.pdf";
+const resumePdfPath = "/resume/Ashwini_Korapati_Resume.pdf";
 
 export default function HeroSection() {
   return (
@@ -20,7 +21,7 @@ export default function HeroSection() {
             Motivated and detail-oriented Software Engineer with 2 years of experience in developing dynamic web applications. Passionate about building scalable, user-centric solutions and continuously learning new technologies.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-            <a href={resumePdfPath} download="Ashwini_M_Resume.pdf">
+            <a href={resumePdfPath} download="Ashwini_Korapati_Resume.pdf">
               <Button size="lg" className="w-full sm:w-auto group">
                 Download Resume <Download className="ml-2 h-5 w-5 group-hover:animate-bounce" />
               </Button>

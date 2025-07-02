@@ -13,7 +13,7 @@ import { useToast } from '@/hooks/use-toast';
 import Link from 'next/link';
 import { sendEmailAction, type SendEmailInput, type SendEmailResult } from '@/app/actions/send-email';
 
-const resumePdfPath = "/resume/Ashwini_M_Resume.pdf";
+const resumePdfPath = "/resume/Ashwini_Korapati_Resume.pdf";
 
 export default function ContactSection() {
   const { toast } = useToast();
@@ -217,7 +217,7 @@ export default function ContactSection() {
                 </CardHeader>
                 <CardContent>
                     <p className="text-foreground/80 mb-4">View my latest resume for more details about my experience and skills.</p>
-                    <a href={resumePdfPath} download="Ashwini_M_Resume.pdf">
+                    <a href={resumePdfPath} download="Ashwini_Korapati_Resume.pdf">
                         <Button className="w-full sm:w-auto group">
                             Download Resume <Download className="ml-2 h-5 w-5 group-hover:animate-bounce" />
                         </Button>

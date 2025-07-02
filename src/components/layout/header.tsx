@@ -15,7 +15,7 @@ const navItems = [
   { name: 'Contact', href: '#contact', icon: <Send className="mr-2 h-4 w-4" /> },
 ];
 
-const resumePdfPath = "/resume/Ashwini_M_Resume.pdf";
+const resumePdfPath = "/resume/Ashwini_Korapati_Resume.pdf";
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -92,7 +92,7 @@ export default function Header() {
             </a>
              <a
               href={resumePdfPath}
-              download="Ashwini_M_Resume.pdf"
+              download="Ashwini_Korapati_Resume.pdf"
               className="flex items-center text-lg font-medium text-foreground hover:text-primary transition-colors"
             >
               <Download className="mr-2 h-4 w-4" />
