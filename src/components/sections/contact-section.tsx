@@ -1,4 +1,3 @@
-
 'use client';
 
 import * as React from 'react';
@@ -37,7 +36,7 @@ export default function ContactSection() {
     try {
       const result: SendEmailResult = await sendEmailAction(formData);
 
-      if (result.success) {
+      if (result && result.success) {
         setFormData({ name: '', email: '', message: '' }); // Reset form
         toast({
           title: "Message Sent!",
@@ -45,7 +44,7 @@ export default function ContactSection() {
           variant: "default",
         });
       } else {
-        throw new Error(result.message);
+        throw new Error(result?.message || 'Failed to send message. The server did not respond correctly.');
       }
     } catch (error) {
       console.error("Error sending message:", error);

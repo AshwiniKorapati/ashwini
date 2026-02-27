@@ -1,4 +1,3 @@
-
 'use server';
 
 import nodemailer from 'nodemailer';
@@ -83,30 +82,30 @@ export async function sendEmailAction(input: SendEmailInput): Promise<SendEmailR
 
   console.log(`Attempting to send email via Nodemailer. To: ${emailTo}, From (config): ${emailServerUser}, Host: ${emailServerHost}, Port: ${emailServerPort}, Secure: ${emailServerSecure}`);
 
-  const transporter = nodemailer.createTransport({
-    host: emailServerHost,
-    port: emailServerPort,
-    secure: emailServerSecure, 
-    auth: {
-      user: emailServerUser,
-      pass: emailServerPassword,
-    },
-    connectionTimeout: 10000, 
-    socketTimeout: 10000,
-    debug: process.env.NODE_ENV === 'development', 
-    logger: process.env.NODE_ENV === 'development', 
-  });
-
-  const mailOptions = {
-    from: `"Portfolio Contact Form" <${emailServerUser}>`, 
-    to: emailTo, 
-    replyTo: email,
-    subject: `New Portfolio Contact from ${name}`,
-    text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
-    html: `<p><strong>Name:</strong> ${name}</p><p><strong>Email:</strong> ${email}</p><p><strong>Message:</strong></p><p>${message.replace(/\n/g, '<br>')}</p>`,
-  };
-
   try {
+    const transporter = nodemailer.createTransport({
+      host: emailServerHost,
+      port: emailServerPort,
+      secure: emailServerSecure, 
+      auth: {
+        user: emailServerUser,
+        pass: emailServerPassword,
+      },
+      connectionTimeout: 10000, 
+      socketTimeout: 10000,
+      debug: process.env.NODE_ENV === 'development', 
+      logger: process.env.NODE_ENV === 'development', 
+    });
+
+    const mailOptions = {
+      from: `"Portfolio Contact Form" <${emailServerUser}>`, 
+      to: emailTo, 
+      replyTo: email,
+      subject: `New Portfolio Contact from ${name}`,
+      text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
+      html: `<p><strong>Name:</strong> ${name}</p><p><strong>Email:</strong> ${email}</p><p><strong>Message:</strong></p><p>${message.replace(/\n/g, '<br>')}</p>`,
+    };
+    
     const info = await transporter.sendMail(mailOptions);
     console.log('Nodemailer: Email sent successfully: %s', info.messageId);
     return { success: true, message: "Thank you for your message. I'll get back to you soon!" };
