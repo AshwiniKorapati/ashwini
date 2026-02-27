@@ -98,7 +98,7 @@ export async function sendEmailAction(input: SendEmailInput): Promise<SendEmailR
   });
 
   const mailOptions = {
-    from: `"${name}" <${emailServerUser}>`, 
+    from: `"Portfolio Contact Form" <${emailServerUser}>`, 
     to: emailTo, 
     replyTo: email,
     subject: `New Portfolio Contact from ${name}`,
@@ -119,7 +119,7 @@ export async function sendEmailAction(input: SendEmailInput): Promise<SendEmailR
         if (nodemailerError.code === 'ECONNREFUSED' || nodemailerError.code === 'ENOTFOUND' || nodemailerError.code === 'EHOSTUNREACH') {
             errorMessage = `Could not connect to email server at ${emailServerHost}:${emailServerPort}. Please check server address, port, and network settings in your hosting environment.`;
         } else if (nodemailerError.responseCode === 535 || nodemailerError.code === 'EAUTH' || (nodemailerError.message && nodemailerError.message.toLowerCase().includes('authentication'))) { 
-            errorMessage = 'Email server authentication failed. Please check your email credentials (EMAIL_SERVER_USER, EMAIL_SERVER_PASSWORD) in your hosting environment variables. If you are using a service like Gmail, you may need to generate an "App Password".';
+            errorMessage = 'Email server authentication failed. Please check your email credentials (EMAIL_SERVER_USER, EMAIL_SERVER_PASSWORD) in your hosting environment variables. If you are using a service like Gmail, you MUST generate an "App Password".';
         } else if (nodemailerError.code === 'ETIMEDOUT' || (error.message && error.message.toLowerCase().includes('timeout'))) {
             errorMessage = `The email server at ${emailServerHost} timed out. Please try again later or check server status.`;
         } else if (nodemailerError.code === 'EENVELOPE') {
