@@ -74,10 +74,9 @@ export default function ContactSection() {
             </h2>
           </div>
           <div className="grid md:grid-cols-2 gap-12 items-start">
-            <Card className="shadow-lg p-2">
+            <Card className="shadow-lg">
               <CardHeader>
-                <CardTitle className="text-2xl text-primary flex items-center">
-                  <Send className="mr-3 h-7 w-7" />
+                <CardTitle className="text-2xl text-primary">
                   Send a Message
                 </CardTitle>
               </CardHeader>
@@ -94,7 +93,7 @@ export default function ContactSection() {
             <div className="space-y-8">
                <Card className="shadow-lg">
                 <CardHeader>
-                    <CardTitle className="text-xl text-primary">Contact Details</CardTitle>
+                    <CardTitle className="text-xl text-primary">Contact Info</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                     <div className="h-6 bg-gray-200 rounded w-3/4 animate-pulse"></div>
@@ -129,10 +128,9 @@ export default function ContactSection() {
           </p>
         </div>
         <div className="grid md:grid-cols-2 gap-12 items-start">
-          <Card className="shadow-lg hover:shadow-xl transition-all duration-300 p-2 transform hover:scale-105 hover:bg-card/90 dark:hover:bg-card/80">
+          <Card className="shadow-lg">
             <CardHeader>
-              <CardTitle className="text-2xl text-primary flex items-center">
-                <Send className="mr-3 h-7 w-7" />
+              <CardTitle className="text-2xl text-primary">
                 Send a Message
               </CardTitle>
             </CardHeader>
@@ -193,9 +191,9 @@ export default function ContactSection() {
             </CardContent>
           </Card>
           <div className="space-y-8">
-            <Card className="shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 hover:bg-card/90 dark:hover:bg-card/80">
+            <Card className="shadow-lg">
               <CardHeader>
-                <CardTitle className="text-xl text-primary">Contact Details</CardTitle>
+                <CardTitle className="text-xl text-primary">Contact Info</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex items-center space-x-3 text-foreground/80 hover:text-primary transition-colors">
@@ -210,7 +208,7 @@ export default function ContactSection() {
                 </div>
               </CardContent>
             </Card>
-             <Card className="shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 hover:bg-card/90 dark:hover:bg-card/80">
+             <Card className="shadow-lg">
                 <CardHeader>
                     <CardTitle className="text-xl text-primary">Resume</CardTitle>
                 </CardHeader>
