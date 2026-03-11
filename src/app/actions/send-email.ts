@@ -31,46 +31,29 @@ export async function sendEmailAction(input: SendEmailInput): Promise<SendEmailR
   const emailServerPassword = process.env.EMAIL_SERVER_PASSWORD;
   const emailServerHost = process.env.EMAIL_SERVER_HOST;
   const emailServerPortEnv = process.env.EMAIL_SERVER_PORT;
-  // Use a fallback for EMAIL_TO_ADDRESS if the environment variable is not set
-  const emailTo = process.env.EMAIL_TO_ADDRESS || 'aashv143@gmail.com'; 
+  const emailTo = process.env.EMAIL_TO_ADDRESS;
 
-  // Updated the check to only fail if other critical variables are missing,
-  // as emailTo now has a fallback.
   const criticalEnvVars = {
     EMAIL_SERVER_USER: emailServerUser,
     EMAIL_SERVER_PASSWORD: emailServerPassword,
     EMAIL_SERVER_HOST: emailServerHost,
     EMAIL_SERVER_PORT: emailServerPortEnv,
-    // EMAIL_TO_ADDRESS is no longer checked here as it has a fallback
+    EMAIL_TO_ADDRESS: emailTo,
   };
-
-  // Check if EMAIL_TO_ADDRESS was explicitly set to empty string or not provided, and no fallback would be desired.
-  // However, since we provide a fallback, we only check if the explicitly set process.env.EMAIL_TO_ADDRESS is missing for logging,
-  // but the function will proceed with the fallback.
-  if (!process.env.EMAIL_TO_ADDRESS) {
-    console.warn("EMAIL_TO_ADDRESS environment variable is not set. Using fallback 'aashv143@gmail.com'. It's recommended to set this in your hosting provider's settings for production.");
-  }
-  
-  if (!emailTo) { // This should ideally not happen now with the fallback, but as a safeguard.
-    const errorMessage = "Email service is not configured: EMAIL_TO_ADDRESS is ultimately not defined even with fallback. This is an unexpected state.";
-    console.error(errorMessage);
-    return { success: false, message: errorMessage };
-  }
-
 
   const missingCriticalVars = Object.entries(criticalEnvVars)
     .filter(([, value]) => !value)
     .map(([key]) => key);
 
   if (missingCriticalVars.length > 0) {
-    const errorMessage = `Email service is not configured. Missing required environment variables: ${missingCriticalVars.join(', ')}. Please ensure these are set in your Netlify (or other hosting provider) deployment settings.`;
+    const errorMessage = `Email service is not configured. Missing required environment variables: ${missingCriticalVars.join(', ')}. Please ensure these are set in your hosting provider's deployment settings.`;
     console.error(errorMessage);
     return { success: false, message: errorMessage };
   }
 
   const emailServerPort = parseInt(emailServerPortEnv!, 10);
   if (isNaN(emailServerPort)) {
-    const errorMessage = "Invalid EMAIL_SERVER_PORT environment variable. It must be a number. Please check your Netlify (or other hosting provider) deployment settings.";
+    const errorMessage = "Invalid EMAIL_SERVER_PORT environment variable. It must be a number. Please check your hosting provider's deployment settings.";
     console.error(errorMessage);
     return { success: false, message: errorMessage };
   }
